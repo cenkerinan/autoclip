@@ -4,62 +4,72 @@
 
 ## North star
 
-A creator should be able to provide raw footage and an objective rather than a list of editing commands.
+A creator should be able to provide raw footage and an objective rather than a list of editing commands. A brand should likewise be able to provide a product/brief and receive a strategically designed batch of UGC-style ad creative.
 
-Example request:
+The platform has two first-class production modes:
 
-> Make this into the best 15-minute YouTube food-entertainment episode you can. Keep the owner sympathetic, build curiosity around the secret sauce, hold my final verdict until the end, then create eight strong Shorts from unused material.
+1. **Creator Studio** — raw footage → understanding → story → directed edit → derivatives.
+2. **AI Ad Factory** — product/brief → audiences/angles/hooks → UGC production → controlled variants → performance learning.
 
-The system should understand the footage, propose stories, direct the edit, generate a non-destructive timeline, critique its own work, revise it, create derivatives, and eventually learn from publishing performance.
+Both modes use the same production brain, canonical Timeline and render engine.
 
 ## Product thesis
 
-Project Director combines the useful categories represented by FireCut, OpusClip, Descript and Captions, but the differentiator is an **AI production team**:
+Project Director combines the useful categories represented by FireCut, OpusClip, Descript and Captions, plus an AI Ad Factory, but the differentiator is an **AI production team**:
 
 - Executive Producer — understands objective, audience, format and constraints.
 - Story Producer — discovers viable narratives in raw media.
-- Director — chooses structure, scene order, reveals, pacing and visual treatment.
+- Campaign Strategist — creates audiences, angles, objections and creative experiments for ads.
+- Hook/Script specialists — develop social-native hooks and scripts.
+- Director / UGC Director — chooses structure, scene order, reveals, pacing and visual treatment.
 - Editor — converts decisions into a deterministic, non-destructive timeline.
-- Audio, Caption, Visual and Shorts specialists — polish execution.
-- Critic — audits retention, clarity, repetition, pacing, brand fit and technical quality.
-- Performance Learner — later connects published outcomes to creative decisions.
+- Audio, Caption, Visual, Generation and Shorts specialists — polish execution.
+- Critic / Ad Critic — audits retention, clarity, authenticity, proof, pacing, brand fit and technical quality.
+- Performance Learner — connects published outcomes to creative decisions and recommends the next tests.
 
 ## Foundational principles
 
-1. **Media first, AI second.** Raw media, transcript, scenes, speakers and derived signals are canonical data, not prompt text.
-2. **One canonical Media Intelligence Graph.** Every agent and editor works from the same time-aligned representation.
+1. **Media first, AI second.** Raw/generated media, transcript, scenes, speakers and derived signals are canonical data, not prompt text.
+2. **One canonical Media Intelligence Graph.** Every agent and editor works from the same evidence-aware representation.
 3. **One canonical Timeline/EDL.** AI generates edit decisions; rendering is a separate deterministic concern.
 4. **Non-destructive always.** Source media is immutable. Every edit is versioned and reversible.
-5. **Provider independent.** LLM, transcription, vision, embeddings and generation capabilities sit behind contracts.
-6. **Durable workflows.** Long-running production workflows use Temporal-style durable orchestration rather than in-process state.
-7. **Human steerability.** The user can approve, reject or conversationally modify decisions at story, sequence, shot and polish levels.
-8. **Explainability without verbosity.** Important creative choices store structured rationales and evidence/timecodes.
+5. **Provider independent.** LLM, transcription, vision, avatar, voice, image/video generation, embeddings and publishing sit behind contracts.
+6. **Durable workflows.** Long-running production workflows use durable orchestration rather than in-process state.
+7. **Human steerability.** The user can approve, reject or conversationally modify decisions.
+8. **Evidence/provenance.** Important creative choices and synthetic assets retain structured evidence/provenance.
 9. **Evaluation is a product feature.** Every AI stage has tests, confidence, scoring and measurable quality gates.
 10. **Performance learning is opt-in and privacy-aware.** Published analytics can improve recommendations without silently training on private footage.
+11. **Controlled experimentation.** Ad variants record exact creative lineage so performance can be attributed to hooks, angles, personas, offers and CTAs.
+12. **Authenticity controls.** Synthetic UGC must not masquerade as genuine real-person testimony.
 
 ## Greenfield repository target
 
 ```text
 project-director/
 ├── apps/
-│   ├── web/                 # Next.js creator workspace/editor
-│   ├── api/                 # FastAPI application/API boundary
-│   ├── worker-ai/           # intelligence and agent activities
-│   ├── worker-media/        # probe/proxy/transcode/scene/audio activities
-│   └── worker-render/       # final deterministic renders
+│   ├── web/
+│   ├── api/
+│   ├── worker-ai/
+│   ├── worker-media/
+│   └── worker-render/
 ├── packages/
-│   ├── media-schema/        # canonical Media Intelligence Graph contracts
-│   ├── timeline/            # canonical non-destructive Timeline/EDL
-│   ├── ai-contracts/        # provider and agent IO contracts
-│   ├── events/              # domain/realtime event contracts
-│   ├── sdk/                 # typed API SDK
-│   └── ui/                  # shared design system
+│   ├── media-schema/
+│   ├── timeline/
+│   ├── ai-contracts/
+│   ├── generation-contracts/
+│   ├── events/
+│   ├── sdk/
+│   └── ui/
 ├── services/
 │   ├── ingest/
 │   ├── transcription/
 │   ├── vision/
 │   ├── intelligence/
 │   ├── producer/
+│   ├── campaigns/
+│   ├── hooks/
+│   ├── scripts/
+│   ├── generation/
 │   ├── director/
 │   ├── editor/
 │   ├── critic/
@@ -67,8 +77,9 @@ project-director/
 │   ├── audio/
 │   ├── shorts/
 │   ├── render/
+│   ├── publishing/
 │   └── analytics/
-├── workflows/               # durable workflow definitions
+├── workflows/
 ├── infrastructure/
 ├── evals/
 ├── tests/
@@ -91,6 +102,11 @@ project-director/
 
 ## Delivery sequence
 
-M0 Foundation → M1 Media → M2 Intelligence Graph → M3 Producer → M4 Director → M5 Editor → M6 Automated Polish → M7 Shorts → M8 B-roll/Graphics/Music → M9 Critic → M10 Publishing/Learning → M11 Premiere/Resolve integrations.
+M0 Foundation → M1 Media → M2 Intelligence Graph → M3 Producer → M4 Director → M5 Editor → M6 Automated Polish → M7 Shorts → **M8A AI Ad Factory MVP** → M8B B-roll/Graphics/Music → M9 Critic/Ad Critic → M10 Publishing/Performance Learning → M11 Premiere/Resolve integrations → M12 scaled creative experimentation.
 
-See the accompanying documents for the PRD, architecture, canonical schemas, agent contracts and Sprint 0 backlog.
+See:
+- `docs/PRD.md`
+- `docs/ARCHITECTURE.md`
+- `docs/DOMAIN-SCHEMAS.md`
+- `docs/SPRINT-0.md`
+- `docs/AI-AD-FACTORY.md`
