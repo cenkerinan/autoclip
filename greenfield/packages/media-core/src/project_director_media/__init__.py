@@ -22,3 +22,10 @@ __all__ = [
     "TranscriptionOptions", "TranscriptionProvider", "TranscriptionProviderRegistry", "TranscriptionRequest",
     "AnalysisAudioPlan", "build_analysis_audio_ffmpeg_args",
 ]
+
+from .intelligence_graph import (
+    EvidenceRef, IntelligenceEdge, IntelligenceEdgeType, IntelligenceNode,
+    IntelligenceNodeType, MediaIntelligenceGraph, Provenance,
+)
+from .story import StoryBeat, StoryBeatKind, StoryProposal, StoryScore
+from .retrieval import IntelligenceQuery, query_graph
